@@ -8,6 +8,8 @@ import (
 	"golang-final-project1-team2/httpserver/services"
 
 	"github.com/gin-gonic/gin"
+
+	_ "docs"
 )
 
 func main() {

@@ -1,0 +1,97 @@
+definitions:
+  models.Todo:
+    properties:
+      completed_at:
+        type: string
+      description:
+        type: string
+      id:
+        type: integer
+      title:
+        type: string
+    type: object
+  params.TodoCreateRequest:
+    properties:
+      completed_at:
+        type: string
+      description:
+        type: string
+      title:
+        type: string
+    required:
+    - description
+    - title
+    type: object
+  views.Response:
+    properties:
+      error: {}
+      message:
+        type: string
+      payload: {}
+      status:
+        type: integer
+    type: object
+info:
+  contact: {}
+paths:
+  /todos:
+    get:
+      consumes:
+      - application/json
+      description: get all todos
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Todo'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/views.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/views.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/views.Response'
+      summary: List all todos
+      tags:
+      - todos
+    post:
+      consumes:
+      - application/json
+      description: create a new single todo
+      parameters:
+      - description: query params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/params.TodoCreateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Todo'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/views.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/views.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/views.Response'
+      summary: Create new todo
+      tags:
+      - todos
+swagger: "2.0"
