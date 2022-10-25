@@ -57,10 +57,18 @@ func SuccessFindAllResponse(payload interface{}, message string) *Response {
 	}
 }
 
-func SuccessDeleteResponse(payload interface{}, message string) *Response {
+func SuccessFindResponse(payload interface{}, message string) *Response {
 	return &Response{
 		Status:  http.StatusOK,
 		Message: message,
+		Payload: payload,
+	}
+}
+
+func SuccessDeleteResponse(payload interface{}) *Response {
+	return &Response{
+		Status: http.StatusOK,
+		//Message: message,
 		Payload: payload,
 	}
 }
