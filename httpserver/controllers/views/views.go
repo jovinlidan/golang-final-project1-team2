@@ -3,8 +3,8 @@ package views
 import "net/http"
 
 type Response struct {
-	Status  int `json:"status"`
-	Message string `json:"message"`
+	Status  int         `json:"status"`
+	Message string      `json:"message"`
 	Payload interface{} `json:"payload"`
 	Error   interface{} `json:"error"`
 }
@@ -24,8 +24,6 @@ func SuccessCreateResponse(payload interface{}, message string) *Response {
 		Payload: payload,
 	}
 }
-
-
 
 func InternalServerError(err error) *Response {
 	return &Response{
@@ -51,8 +49,6 @@ func DataConflict(err error) *Response {
 	}
 }
 
-
-
 func SuccessFindAllResponse(payload interface{}, message string) *Response {
 	return &Response{
 		Status:  http.StatusOK,
@@ -61,11 +57,18 @@ func SuccessFindAllResponse(payload interface{}, message string) *Response {
 	}
 }
 
-
-func SuccessDeleteResponse(payload interface{}, message string) *Response {
+func SuccessFindResponse(payload interface{}, message string) *Response {
 	return &Response{
 		Status:  http.StatusOK,
 		Message: message,
+		Payload: payload,
+	}
+}
+
+func SuccessDeleteResponse(payload interface{}) *Response {
+	return &Response{
+		Status: http.StatusOK,
+		//Message: message,
 		Payload: payload,
 	}
 }
