@@ -70,5 +70,16 @@ func (s *TodoController) CreateTodo(ctx *gin.Context) {
 
 	response := s.svc.CreateTodo(&req)
 	WriteJsonRespnse(ctx, response)
+}
+
+func (s *TodoController) GetTodoByID(ctx *gin.Context) {
+
+}
+
+func (s *TodoController) UpdateTodo(ctx *gin.Context) {
+
+}
+
+func (s *TodoController) DeleteTodo(ctx *gin.Context) {
 
 }

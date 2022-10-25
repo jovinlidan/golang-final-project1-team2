@@ -26,8 +26,6 @@ func (s *TodoRepo) GetTodos() (*[]models.Todo, error) {
 	return &todos, nil
 }
 
-
-
 func (s *TodoRepo) CreateTodo(todo *models.Todo) error {
 	err := s.db.Create(&todo).Error
 	return err
